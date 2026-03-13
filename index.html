@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dulce Espera</title>
+  <style>
+    :root {
+      --sage: #7C9082;
+      --sage-light: #E8F0EB;
+      --forest: #2D3B31;
+      --forest-light: #5A6B5F;
+      --sand: #FDFCF8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(135deg, #C8DDD0 0%, #DDE8E0 55%, #E8E2D6 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 32px;
+      padding: 48px 40px;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      border: 1.5px solid rgba(255, 255, 255, 0.90);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    }
+
+    .logo {
+      width: 88px;
+      height: 88px;
+      border-radius: 22px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--forest);
+      margin-bottom: 6px;
+    }
+
+    .tagline {
+      font-size: 15px;
+      color: var(--forest-light);
+      margin-bottom: 32px;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .links a {
+      display: block;
+      padding: 14px 24px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+
+    .links a:hover { opacity: 0.85; }
+
+    .links .primary {
+      background: var(--sage);
+      color: #fff;
+    }
+
+    .links .secondary {
+      background: var(--sage-light);
+      color: var(--sage);
+    }
+
+    footer {
+      position: fixed;
+      bottom: 20px;
+      text-align: center;
+      width: 100%;
+      font-size: 13px;
+      color: var(--forest-light);
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h1>Dulce Espera</h1>
+  <p class="tagline">Tu diario de embarazo</p>
+
+  <div class="links">
+    <a href="privacy-policy.html" class="primary">Politica de Privacidad</a>
+    <a href="terms.html" class="secondary">Terminos y Condiciones</a>
+    <a href="delete-account.html" class="secondary">Eliminar mi cuenta</a>
+  </div>
+</div>
+
+<footer>&copy; 2026 Dulce Espera</footer>
+
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eliminar cuenta — Dulce Espera</title>
+  <style>
+    :root {
+      --sage: #7C9082;
+      --sage-light: #E8F0EB;
+      --forest: #2D3B31;
+      --forest-light: #5A6B5F;
+      --sand: #FDFCF8;
+      --white: #FFFFFF;
+      --red: #C0392B;
+      --red-light: #FDEDEC;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--sand);
+      color: var(--forest);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      background: linear-gradient(135deg, #C8DDD0 0%, #DDE8E0 55%, #E8E2D6 100%);
+      padding: 60px 24px 48px;
+      text-align: center;
+    }
+
+    header h1 { font-size: 28px; font-weight: 800; color: var(--forest); margin-bottom: 8px; }
+    header p { font-size: 15px; color: var(--forest-light); }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    h2 {
+      font-size: 20px; font-weight: 700; color: var(--forest);
+      margin-top: 36px; margin-bottom: 12px;
+      padding-bottom: 8px; border-bottom: 2px solid var(--sage-light);
+    }
+
+    p, li { font-size: 15px; color: var(--forest-light); margin-bottom: 12px; }
+    ul { padding-left: 24px; margin-bottom: 16px; }
+    li { margin-bottom: 6px; }
+    strong { color: var(--forest); }
+    a { color: var(--sage); text-decoration: underline; }
+
+    .card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 20px 0;
+      border: 1.5px solid rgba(124, 144, 130, 0.15);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+
+    .step {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      width: 32px;
+      height: 32px;
+      border-radius: 16px;
+      background: var(--sage);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .step-content h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--forest);
+      margin-bottom: 4px;
+    }
+
+    .step-content p {
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+
+    .warning {
+      background: var(--red-light);
+      border: 1.5px solid rgba(192, 57, 43, 0.2);
+      border-radius: 16px;
+      padding: 20px;
+      margin: 24px 0;
+    }
+
+    .warning strong {
+      color: var(--red);
+    }
+
+    .warning p {
+      color: var(--red);
+      margin-bottom: 0;
+    }
+
+    footer {
+      text-align: center; padding: 32px 24px;
+      font-size: 13px; color: var(--forest-light);
+      border-top: 1px solid var(--sage-light);
+    }
+
+    @media (max-width: 480px) {
+      header { padding: 48px 20px 36px; }
+      header h1 { font-size: 24px; }
+      .container { padding: 28px 18px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Eliminar mi cuenta</h1>
+  <p>Dulce Espera — Tu diario de embarazo</p>
+</header>
+
+<div class="container">
+
+  <p>
+    Si deseas eliminar tu cuenta de Dulce Espera y todos los datos asociados,
+    puedes hacerlo directamente desde la aplicacion siguiendo estos pasos:
+  </p>
+
+  <h2>Como eliminar tu cuenta</h2>
+
+  <div class="card">
+    <div class="step">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <h3>Abre la App</h3>
+        <p>Inicia sesion en Dulce Espera con tu cuenta.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">2</div>
+      <div class="step-content">
+        <h3>Ve a Configuracion</h3>
+        <p>Toca el icono de configuracion (engranaje) en la pantalla principal.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">3</div>
+      <div class="step-content">
+        <h3>Selecciona "Eliminar cuenta"</h3>
+        <p>Desplazate hasta la seccion de cuenta y toca "Eliminar mi cuenta".</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-number">4</div>
+      <div class="step-content">
+        <h3>Confirma la eliminacion</h3>
+        <p>Lee el aviso y confirma que deseas proceder. Tu cuenta entrara en un periodo de gracia de 30 dias.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>Periodo de gracia (30 dias)</h2>
+  <p>
+    Despues de solicitar la eliminacion, tu cuenta se desactiva pero no se elimina de inmediato.
+    Tienes <strong>30 dias</strong> para cambiar de opinion. Si inicias sesion durante este periodo,
+    podras cancelar la eliminacion y recuperar todos tus datos.
+  </p>
+
+  <div class="warning">
+    <p>
+      <strong>Pasados los 30 dias, la eliminacion es permanente e irreversible.</strong>
+      Todos tus datos seran borrados de nuestros servidores, incluyendo:
+    </p>
+  </div>
+
+  <h2>Datos que se eliminan</h2>
+  <ul>
+    <li>Informacion de perfil y cuenta</li>
+    <li>Datos del embarazo (semanas, peso, medidas)</li>
+    <li>Historial de chat con ELA (asistente IA)</li>
+    <li>Documentos medicos subidos</li>
+    <li>Fotos de la pancita</li>
+    <li>Entradas del diario y estados de animo</li>
+    <li>Registros de gastos</li>
+    <li>Citas del calendario</li>
+    <li>Conteo de patadas</li>
+    <li>Listas de nombres de bebe</li>
+    <li>Historial de suscripciones y cupones</li>
+    <li>Publicaciones en la comunidad</li>
+  </ul>
+
+  <h2>Suscripciones activas</h2>
+  <p>
+    <strong>Importante:</strong> Eliminar tu cuenta no cancela automaticamente tu suscripcion
+    en la tienda de aplicaciones. Si tienes una suscripcion activa, debes cancelarla
+    por separado desde:
+  </p>
+  <ul>
+    <li><strong>iPhone:</strong> Ajustes &gt; Tu nombre &gt; Suscripciones</li>
+    <li><strong>Android:</strong> Google Play Store &gt; Pagos y suscripciones &gt; Suscripciones</li>
+  </ul>
+
+  <h2>No puedes acceder a la App?</h2>
+  <p>
+    Si no puedes iniciar sesion para eliminar tu cuenta, envanos un correo a
+    <a href="mailto:dulceespera.app@gmail.com">dulceespera.app@gmail.com</a> con el asunto
+    "Eliminar cuenta" e incluye el correo electronico asociado a tu cuenta. Procesaremos
+    tu solicitud en un plazo maximo de 7 dias habiles.
+  </p>
+
+</div>
+
+<footer>&copy; 2026 Dulce Espera. Todos los derechos reservados.</footer>
+
+</body>
+</html>
