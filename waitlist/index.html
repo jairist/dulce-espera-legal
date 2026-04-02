@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dulce Espera — Tu compañera inteligente de embarazo</title>
+    <meta name="description" content="Seguimiento semanal, nombres con IA, diario de recuerdos y más. Únete a la lista de espera.">
+    <meta property="og:title" content="Dulce Espera — Nombres y Recuerdos">
+    <meta property="og:description" content="Tu compañera inteligente de embarazo. Muy pronto en tu celular.">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="assets/icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,600;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --forest: #2F3E34;
+            --clay: #D4A373;
+            --sage: #7C9082;
+            --light-sage: #B8CEC0;
+            --sand: #FDFCF8;
+            --cream: #FAF3E8;
+            --soft-pink: #E6B8A2;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            background: var(--sand);
+            color: var(--forest);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* === HERO === */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 24px;
+            background: linear-gradient(180deg, #9BB7A2 0%, #B5C8B7 40%, #D3C5B2 100%);
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .blob-1 { top: -120px; right: -80px; width: 380px; height: 380px; background: rgba(116,154,125,0.45); }
+        .blob-2 { top: 40%; left: -100px; width: 320px; height: 320px; background: rgba(188,134,93,0.30); }
+        .blob-3 { bottom: -60px; right: -40px; width: 260px; height: 260px; background: rgba(116,154,125,0.35); }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .logo-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 24px;
+            object-fit: cover;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
+        .hero-badge {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: white;
+            background: var(--forest);
+            padding: 10px 28px;
+            border-radius: 999px;
+            margin-bottom: 28px;
+            box-shadow: 0 4px 16px rgba(47,62,52,0.3);
+        }
+
+        .hero h1 {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: clamp(36px, 6vw, 52px);
+            color: var(--forest);
+            line-height: 1.15;
+            margin-bottom: 12px;
+        }
+
+        .hero h1 em {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 2px 12px rgba(47,62,52,0.25);
+        }
+
+        .hero-sub {
+            font-size: 18px;
+            color: var(--forest);
+            opacity: 0.85;
+            line-height: 1.6;
+            margin-bottom: 36px;
+            max-width: 480px;
+        }
+
+        /* === FORM CARD === */
+        .form-card {
+            background: rgba(255,255,255,0.88);
+            border: 1.5px solid rgba(255,255,255,0.95);
+            border-radius: 28px;
+            padding: 36px 32px;
+            max-width: 460px;
+            width: 100%;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+            backdrop-filter: blur(12px);
+        }
+
+        .form-card h2 {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: 22px;
+            color: var(--forest);
+            margin-bottom: 6px;
+            text-align: center;
+        }
+
+        .form-card p {
+            font-size: 14px;
+            color: #4A5B50;
+            text-align: center;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1.5px solid var(--light-sage);
+            border-radius: 14px;
+            font-family: 'Manrope', sans-serif;
+            font-size: 15px;
+            color: var(--forest);
+            background: white;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input::placeholder { color: #9BA8A0; }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--sage);
+            box-shadow: 0 0 0 3px rgba(124,144,130,0.15);
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%237C9082' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            padding-right: 40px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 14px;
+            background: var(--sage);
+            color: white;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 16px rgba(124,144,130,0.35);
+            margin-top: 8px;
+        }
+
+        .btn-submit:hover { background: #6A7E70; transform: translateY(-1px); }
+        .btn-submit:active { transform: translateY(0); }
+        .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+        .form-footer {
+            font-size: 12px;
+            color: #7C9082;
+            text-align: center;
+            margin-top: 16px;
+            line-height: 1.5;
+        }
+
+        /* === SUCCESS STATE === */
+        .success-state {
+            display: none;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .success-state .check-circle {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: var(--sage);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .success-state h3 {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: 24px;
+            color: var(--forest);
+            margin-bottom: 10px;
+        }
+
+        .success-state p {
+            font-size: 15px;
+            color: #4A5B50;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        /* === FEATURES SECTION === */
+        .features {
+            padding: 80px 24px;
+            background: var(--sand);
+        }
+
+        .features-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: clamp(28px, 4vw, 38px);
+            color: var(--forest);
+            margin-bottom: 8px;
+        }
+
+        .features h2 em {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            color: var(--clay);
+        }
+
+        .features-subtitle {
+            font-size: 16px;
+            color: #4A5B50;
+            margin-bottom: 48px;
+            line-height: 1.6;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: white;
+            border: 1.5px solid rgba(184,206,192,0.4);
+            border-radius: 20px;
+            padding: 32px 24px;
+            text-align: left;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #9BB7A2, #B8CEC0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+
+        .feature-card h3 {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--forest);
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: #4A5B50;
+            line-height: 1.55;
+        }
+
+        /* === ELA SECTION === */
+        .ela-section {
+            padding: 80px 24px;
+            background: linear-gradient(180deg, var(--cream) 0%, var(--sand) 100%);
+        }
+
+        .ela-inner {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .ela-avatar-large {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 8px 24px rgba(124,144,130,0.2);
+            margin-bottom: 24px;
+            object-fit: cover;
+        }
+
+        .ela-inner h2 {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: clamp(26px, 4vw, 34px);
+            color: var(--forest);
+            margin-bottom: 16px;
+        }
+
+        .ela-inner p {
+            font-size: 16px;
+            color: #4A5B50;
+            line-height: 1.65;
+            max-width: 520px;
+            margin-bottom: 24px;
+        }
+
+        .chat-preview {
+            background: white;
+            border-radius: 20px;
+            padding: 24px;
+            max-width: 420px;
+            width: 100%;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            text-align: left;
+        }
+
+        .chat-bubble {
+            padding: 12px 16px;
+            border-radius: 16px;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 12px;
+            max-width: 85%;
+        }
+
+        .chat-bubble.user {
+            background: var(--sage);
+            color: white;
+            margin-left: auto;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chat-bubble.ela {
+            background: #F0F5F1;
+            color: var(--forest);
+            border-bottom-left-radius: 4px;
+        }
+
+        /* === FOOTER CTA === */
+        .footer-cta {
+            padding: 60px 24px;
+            background: var(--forest);
+            text-align: center;
+        }
+
+        .footer-cta h2 {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 800;
+            font-size: clamp(24px, 4vw, 32px);
+            color: white;
+            margin-bottom: 12px;
+        }
+
+        .footer-cta p {
+            color: var(--light-sage);
+            font-size: 15px;
+            margin-bottom: 28px;
+            line-height: 1.6;
+        }
+
+        .btn-cta-footer {
+            display: inline-block;
+            padding: 16px 40px;
+            background: var(--clay);
+            color: white;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            border-radius: 14px;
+            text-decoration: none;
+            transition: all 0.2s;
+            box-shadow: 0 4px 16px rgba(212,163,115,0.35);
+        }
+
+        .btn-cta-footer:hover { background: #C49463; transform: translateY(-2px); }
+
+        .social-links {
+            margin-top: 32px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: var(--light-sage);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .social-links a:hover { color: white; }
+
+        .footer-bottom {
+            margin-top: 40px;
+            font-size: 12px;
+            color: rgba(184,206,192,0.5);
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 640px) {
+            .hero { padding: 40px 20px; }
+            .form-card { padding: 28px 24px; }
+            .features { padding: 60px 20px; }
+            .ela-section { padding: 60px 20px; }
+            .features-grid { grid-template-columns: 1fr; }
+        }
+
+        /* === ANIMATIONS === */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-content { animation: fadeInUp 0.8s ease-out; }
+        .form-card { animation: fadeInUp 0.8s ease-out 0.2s both; }
+    </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <div class="hero-content">
+        <img src="assets/icon.png" alt="Dulce Espera" class="logo-icon">
+        <div class="hero-badge">MUY PRONTO</div>
+        <h1>Tu compañera<br><em>inteligente</em> de embarazo</h1>
+        <p class="hero-sub">Seguimiento semanal, nombres con IA, diario de recuerdos y mucho más. Todo en un solo lugar.</p>
+    </div>
+
+    <div class="form-card">
+        <div id="formContent">
+            <h2>Sé la primera en enterarte</h2>
+            <p>Únete a la lista de espera y recibe acceso anticipado cuando lancemos.</p>
+            <form id="waitlistForm">
+                <div class="form-group">
+                    <input type="text" name="nombre" placeholder="Tu nombre" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Tu correo electrónico" required>
+                </div>
+                <div class="form-group">
+                    <select name="semanas" required>
+                        <option value="" disabled selected>¿En qué etapa estás?</option>
+                        <option value="planificando">Estoy planificando quedar embarazada</option>
+                        <option value="primer-trimestre">Primer trimestre (semanas 1-12)</option>
+                        <option value="segundo-trimestre">Segundo trimestre (semanas 13-27)</option>
+                        <option value="tercer-trimestre">Tercer trimestre (semanas 28-40)</option>
+                        <option value="ya-nacio">Mi bebé ya nació</option>
+                        <option value="curiosa">Solo tengo curiosidad</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-submit" id="submitBtn">Unirme a la lista de espera</button>
+            </form>
+            <div class="form-footer">Sin spam, lo prometemos. Solo noticias sobre el lanzamiento.</div>
+        </div>
+        <div class="success-state" id="successState">
+            <div class="check-circle">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3 id="successTitle">¡Estás en la lista!</h3>
+            <p id="successText">Te avisaremos apenas Dulce Espera esté lista para ti. Mientras tanto, síguenos en Instagram para tips de embarazo.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+    <div class="features-inner">
+        <h2>Todo lo que necesitas en <em>un solo lugar</em></h2>
+        <p class="features-subtitle">Diseñada por mamás, potenciada por inteligencia artificial.</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <h3>Seguimiento semanal</h3>
+                <p>Descubre cómo crece tu bebé cada semana con comparaciones visuales y datos médicos claros.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"/></svg>
+                </div>
+                <h3>Nombres con IA</h3>
+                <p>Explora nombres por origen, significado y estilo. Vota en pareja y encuentra el nombre perfecto.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"/></svg>
+                </div>
+                <h3>Diario de recuerdos</h3>
+                <p>Guarda fotos de tu pancita, escribe cómo te sientes cada semana y crea un álbum inolvidable.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></svg>
+                </div>
+                <h3>ELA, tu asistente 24/7</h3>
+                <p>Pregúntale lo que sea sobre tu embarazo. Responde en segundos con información personalizada a tu semana.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+                </div>
+                <h3>Agenda prenatal</h3>
+                <p>Organiza citas médicas, recordatorios de vitaminas y controles sin perderte nada importante.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h3>Cuenta compartida</h3>
+                <p>Invita a tu pareja para que vivan juntos cada etapa del embarazo desde su propio celular.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ELA -->
+<section class="ela-section">
+    <div class="ela-inner">
+        <img src="assets/ela_avatar.png" alt="ELA" class="ela-avatar-large">
+        <h2>Conoce a ELA</h2>
+        <p>Tu asistente inteligente de embarazo. Disponible las 24 horas, los 7 días. Pregúntale lo que sea — ella entiende tu semana exacta y responde con cariño.</p>
+        <div class="chat-preview">
+            <div class="chat-bubble user">Tengo náuseas todo el día, ¿es normal en la semana 8?</div>
+            <div class="chat-bubble ela">¡Totalmente normal! En la semana 8 las náuseas pueden ser intensas por el pico de hCG. Te comparto 3 remedios naturales que ayudan mucho...</div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER CTA -->
+<footer class="footer-cta">
+    <h2>No te pierdas el lanzamiento</h2>
+    <p>Sé parte de las primeras mamás en probar Dulce Espera.</p>
+    <a href="#" class="btn-cta-footer" onclick="document.querySelector('.hero').scrollIntoView({behavior:'smooth'});return false;">Unirme a la lista de espera</a>
+    <div class="social-links">
+        <a href="https://www.instagram.com/dulceesperaapp/" target="_blank">Instagram</a>
+        <a href="https://web.facebook.com/profile.php?id=61574394207375" target="_blank">Facebook</a>
+    </div>
+    <div class="footer-bottom">&copy; 2026 Dulce Espera — Nombres y Recuerdos. Hecho con amor.</div>
+</footer>
+
+<script>
+    const API_ENDPOINT = 'https://muestra-espera-production.up.railway.app/api/waitlist';
+
+    const form = document.getElementById('waitlistForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const formContent = document.getElementById('formContent');
+    const successState = document.getElementById('successState');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Registrando...';
+
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData);
+
+        try {
+            const res = await fetch(API_ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            if (!res.ok) throw new Error('Error al registrar');
+            const result = await res.json();
+
+            formContent.querySelector('form').style.display = 'none';
+            formContent.querySelector('h2').style.display = 'none';
+            formContent.querySelector('p').style.display = 'none';
+            formContent.querySelector('.form-footer').style.display = 'none';
+
+            if (result.status === 'already_registered') {
+                document.getElementById('successTitle').textContent = '¡Ya estás en la lista!';
+                document.getElementById('successText').textContent = 'Este correo ya está registrado. Te avisaremos cuando lancemos.';
+            }
+            successState.style.display = 'block';
+        } catch (err) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Unirme a la lista de espera';
+            alert('Hubo un error. Por favor intenta de nuevo.');
+        }
+    });
+</script>
+</body>
+</html>
